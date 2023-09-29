@@ -1,0 +1,58 @@
+#include <stdio.h>
+#define LMAX 100
+int main()
+{
+    int an, am, n, matrix[LMAX][LMAX], a[LMAX], kol_vo[LMAX] = {0};
+
+    do
+    {
+        printf("Input matrix size\n");
+        scanf("%d %d", &an, &am);
+        printf("Input array's size\n");
+        scanf("%d", &n);
+    }
+while ((an <= 0) ||  (am <= 0) || (n <= 0) || (an >= LMAX) || (am >= LMAX));
+{    
+    for (int i = 1; i <= an; i++)
+    {
+        for (int j = 1; j <= am; j++)
+        {
+            scanf("%d", &matrix[i][j]);
+        }
+        
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        scanf("%d", &a[i]);
+        kol_vo[a[i]]+=1;
+    }
+    
+    
+    
+    int k, flag = 0, min = 100000;
+    for (int i = 1; i <= an; i++)
+    {
+        for (int j = 1; j <= am; j++)
+        {
+            if ((matrix[i][j] <= min) && (kol_vo[matrix[i][j]] > 0))
+            {
+                min = matrix[i][j];
+                flag = 1;
+            }
+        }
+    }
+    if (flag == 0)
+    {
+        printf("Trere is no appropriate minimum");
+    }
+    else
+    {
+        printf("%d", min);
+    }
+    
+}   
+    return 0;
+}    
+
+    
+
